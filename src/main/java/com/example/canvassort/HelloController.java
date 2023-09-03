@@ -24,12 +24,12 @@ public class HelloController {
     private static final int CANVAS_WIDTH = ARRAY_SIZE * (RECT_WIDTH + SPACING);
     private static final int CANVAS_HEIGHT = 400;
     private int[] array;
-    //    private int[] array = new int[ARRAY_SIZE];
     @FXML
     private TextField countTextField;
     private GraphicsContext gc;
 
 
+    // Hàm tạo dữ liệu ngẫu nhiên và dữ liệu nằm trong khoảng 0 dến 100
     @FXML
     private void generateRandomNumbers(ActionEvent event) {
         try {
@@ -56,6 +56,7 @@ public class HelloController {
         }
     }
 
+    // Hiện thị alert thông báo ra màn hình
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -64,6 +65,8 @@ public class HelloController {
         alert.showAndWait();
     }
 
+
+    // hàm thực hiện chạy Merge sort
     @FXML
     public void startSimulation() {
         new Thread(() -> {
@@ -77,23 +80,15 @@ public class HelloController {
         }).start();
     }
 
-    //    private void drawArray(int[] arr) {
-////        gc.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-//        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-//        for (int i = 0; i < arr.length; i++) {
-//            // Vẽ cột với màu xanh
-//            gc.setFill(Color.BLUE);
-//            gc.fillRect(i * RECT_WIDTH, CANVAS_HEIGHT - arr[i], RECT_WIDTH - SPACING, arr[i]);
-//
-//            // Vẽ giá trị của cột
-//            gc.setFill(Color.BLACK);
-//            gc.fillText(String.valueOf(arr[i]), i * RECT_WIDTH, CANVAS_HEIGHT - arr[i] - 5);
-//        }
-//    }
+    // Hàm vẽ Canvas mặc định màu là màu xanh => BLUE
     private void drawArray(int[] arr) {
         drawArray(arr, Collections.emptyList(), Color.BLUE);
     }
 
+
+    // Thiết lập các màu khi vẽ
+    // BLUE mặc định và sắp xếp đúng
+    // Black và RED là màu đang sắp xếp
     private void drawArray(int[] arr, List<Integer> indices, Color color) {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         for (int i = 0; i < arr.length; i++) {
@@ -110,6 +105,7 @@ public class HelloController {
     }
 
 
+    // hàm trộn merger sort
     private void mergeSort(int[] arr, int l, int r) throws InterruptedException {
         if (l < r) {
             int m = l + (r - l) / 2;
@@ -123,51 +119,6 @@ public class HelloController {
             drawArray(arr);
         }
     }
-
-//    private void merge(int[] arr, int l, int m, int r) {
-//        int n1 = m - l + 1;
-//        int n2 = r - m;
-//
-//        int[] L = new int[n1];
-//        int[] R = new int[n2];
-//
-//        for (int i = 0; i < n1; i++) {
-//            L[i] = arr[l + i];
-//        }
-//        for (int j = 0; j < n2; j++) {
-//            R[j] = arr[m + 1 + j];
-//        }
-//
-//        int i = 0, j = 0;
-//
-//        int k = l;
-//        while (i < n1 && j < n2) {
-//            if (L[i] <= R[j]) {
-//                arr[k] = L[i];
-//                i++;
-//            } else {
-//                arr[k] = R[j];
-//                j++;
-//            }
-//            k++;
-//        }
-//
-//        while (i < n1) {
-//            arr[k] = L[i];
-//            i++;
-//            k++;
-//        }
-//
-//        while (j < n2) {
-//            arr[k] = R[j];
-//            j++;
-//            k++;
-//        }
-////        drawArray(arr);
-//        Platform.runLater(() -> {
-//            drawArray(arr);
-//        });
-//    }
 
     private void merge(int[] arr, int l, int m, int r) throws InterruptedException {
         int n1 = m - l + 1;
