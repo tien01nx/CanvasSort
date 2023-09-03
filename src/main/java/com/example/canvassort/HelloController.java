@@ -176,5 +176,99 @@ public class HelloController {
         }
     }
 
+    // quick sort
+    @FXML
+    public void startQuickSortSimulation() {
+        new Thread(() -> {
+            try {
+                quickSort(array, 0, array.length - 1);
+                System.out.println("Sau khi sắp xếp bằng Quick Sort: \n" + Arrays.toString(array));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+    private void quickSort(int[] arr, int low, int high) throws InterruptedException {
+        if (low < high) {
+            int pi = partition(arr, low, high);
+
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+
+            Thread.sleep(500);
+            drawArray(arr);
+        }
+    }
+
+    private int partition(int[] arr, int low, int high) throws InterruptedException {
+        int pivot = arr[high];
+        int i = (low - 1); // chỉ số của phần tử nhỏ hơn
+        for (int j = low; j < high; j++) {
+            // Đánh dấu sự so sánh bằng màu ĐEN
+            drawArray(arr, Arrays.asList(j, high), Color.BLACK);
+
+            if (arr[j] < pivot) {
+                i++;
+
+                // swap arr[i] and arr[j]
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+
+                // Đánh dấu các phần tử được hoán đổi bằng màu ĐỎ
+                drawArray(arr, Arrays.asList(i, j), Color.RED);
+            }
+        }
+
+        // đổi chỗ  arr[i+1] và  arr[high] (or pivot)
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp;
+
+        // Đánh dấu các phần tử được hoán đổi bằng màu ĐỎ
+        drawArray(arr, Arrays.asList(i + 1, high), Color.RED);
+
+        return i + 1;
+    }
+
+
+    // bubblr sort
+    @FXML
+    public void startBubbleSortSimulation() {
+        new Thread(() -> {
+            try {
+                bubbleSort(array);
+                System.out.println("Sau khi sắp xếp bằng Bubble Sort: \n" + Arrays.toString(array));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+    private void bubbleSort(int[] arr) throws InterruptedException {
+        int n = arr.length;
+        for (int i = 0; i < n-1; i++) {
+            for (int j = 0; j < n-i-1; j++) {
+                // Đánh dấu sự so sánh bằng màu ĐEN
+                drawArray(arr, Arrays.asList(j, j+1), Color.BLACK);
+
+                if (arr[j] > arr[j+1]) {
+                    // swap arr[j] and arr[j+1]
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+
+                    // Đánh dấu các phần tử được hoán đổi bằng màu ĐỎ
+                    drawArray(arr, Arrays.asList(j, j+1), Color.RED);
+                }
+
+               // Thời gian chạy
+                Thread.sleep(100);
+            }
+        }
+    }
+
+
 }
 

@@ -37,7 +37,7 @@
         </MenuBar>
     </top>
     <center>
-        <ScrollPane fx:id="scrollPane" prefHeight="337.0" prefWidth="291.0" BorderPane.alignment="CENTER" fitToWidth="false" fitToHeight="false">
+        <ScrollPane fx:id="scrollPane" fitToHeight="false" fitToWidth="false" prefHeight="337.0" prefWidth="291.0" BorderPane.alignment="CENTER">
             <content>
                 <Canvas fx:id="canvas" height="400" width="450" />
             </content>
@@ -81,6 +81,8 @@
                         <Label text="bubble Sort" GridPane.rowIndex="1" />
                         <Label text="Merge Sort" GridPane.rowIndex="2" />
                         <Button mnemonicParsing="false" onAction="#startSimulation" text="Chạy" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#startQuickSortSimulation" text="Chạy" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#startBubbleSortSimulation" text="Chạy" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
                     </children>
                 </GridPane>
