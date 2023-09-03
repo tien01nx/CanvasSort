@@ -10,7 +10,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.FileChooser;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class HelloController {
@@ -27,6 +30,33 @@ public class HelloController {
     @FXML
     private TextField countTextField;
     private GraphicsContext gc;
+
+
+    @FXML
+    private void loadDataFromFile(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Data File");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Text Files", "*.txt"),
+                new FileChooser.ExtensionFilter("All Files", "*.*")
+        );
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            List<Integer> numbers = new ArrayList<>();
+            try (Scanner scanner = new Scanner(selectedFile)) {
+                while (scanner.hasNextInt()) {
+                    numbers.add(scanner.nextInt());
+                }
+                array = numbers.stream().mapToInt(i -> i).toArray();
+                if (gc == null) {
+                    gc = canvas.getGraphicsContext2D();
+                }
+                drawArray(array);
+            } catch (FileNotFoundException e) {
+                showAlert("Error", "File not found.");
+            }
+        }
+    }
 
 
     // Hàm tạo dữ liệu ngẫu nhiên và dữ liệu nằm trong khoảng 0 dến 100
