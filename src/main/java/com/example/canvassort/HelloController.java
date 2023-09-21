@@ -31,7 +31,7 @@ public class HelloController {
     private TextField countTextField;
     private GraphicsContext gc;
 
-
+    int count;
     @FXML
     private void loadDataFromFile(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -63,11 +63,10 @@ public class HelloController {
     @FXML
     private void generateRandomNumbers(ActionEvent event) {
         try {
-            int count = Integer.parseInt(countTextField.getText());
+             count = Integer.parseInt(countTextField.getText());
             canvas.setWidth(count * (RECT_WIDTH + SPACING));
             canvas.setHeight(CANVAS_HEIGHT);
 
-//            gc = canvas.getGraphicsContext2D();
             if (gc == null) {
                 gc = canvas.getGraphicsContext2D();
             }
@@ -145,7 +144,7 @@ public class HelloController {
 
             merge(arr, l, m, r);
 
-            Thread.sleep(500);
+//            Thread.sleep(500);
             drawArray(arr);
         }
     }
@@ -169,19 +168,24 @@ public class HelloController {
         int k = l;
         List<Integer> indices = new ArrayList<>();
 
+        System.out.println("Bắt đầu quá trình trộn từ chỉ số " + l + " đến " + r);
+
         while (i < n1 && j < n2) {
             indices.clear();
             indices.add(l + i);
             indices.add(m + 1 + j);
+            System.out.println("So sánh phần tử " + L[i] + " với " + R[j]);
             Platform.runLater(() -> {
                 drawArray(arr, indices, Color.RED); // Màu đỏ khi so sánh
             });
-            Thread.sleep(1000);  // Dừng một lúc để hiển thị so sánh
+            Thread.sleep(500);  // Dừng một lúc để hiển thị so sánh
 
             if (L[i] <= R[j]) {
+                System.out.println("Chọn phần tử " + L[i]);
                 arr[k] = L[i];
                 i++;
             } else {
+                System.out.println("Chọn phần tử " + R[j]);
                 arr[k] = R[j];
                 j++;
             }
@@ -190,20 +194,23 @@ public class HelloController {
             Platform.runLater(() -> {
                 drawArray(arr, indices, Color.BLACK); // Màu đen sau khi gộp
             });
-            Thread.sleep(1000); // Dừng một lúc sau khi gộp
+            Thread.sleep(500); // Dừng một lúc sau khi gộp
         }
 
         while (i < n1) {
+            System.out.println("Chọn phần tử " + L[i] + " từ mảng còn lại L");
             arr[k] = L[i];
             i++;
             k++;
         }
 
         while (j < n2) {
+            System.out.println("Chọn phần tử " + R[j] + " từ mảng còn lại R");
             arr[k] = R[j];
             j++;
             k++;
         }
+        System.out.println("Kết thúc quá trình trộn từ chỉ số " + l + " đến " + r);
     }
 
     // quick sort
@@ -211,7 +218,9 @@ public class HelloController {
     public void startQuickSortSimulation() {
         new Thread(() -> {
             try {
+                System.out.println("Phần tử pivot: "+array[count-1]);
                 quickSort(array, 0, array.length - 1);
+
                 System.out.println("Sau khi sắp xếp bằng Quick Sort: \n" + Arrays.toString(array));
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -220,8 +229,11 @@ public class HelloController {
     }
 
     private void quickSort(int[] arr, int low, int high) throws InterruptedException {
+
         if (low < high) {
+
             int pi = partition(arr, low, high);
+            System.out.println("Partition index: " + pi + " | Array: " + Arrays.toString(arr));
 
             quickSort(arr, low, pi - 1);
             quickSort(arr, pi + 1, high);
@@ -237,7 +249,7 @@ public class HelloController {
         for (int j = low; j < high; j++) {
             // Đánh dấu sự so sánh bằng màu ĐEN
             drawArray(arr, Arrays.asList(j, high), Color.BLACK);
-
+            System.out.println("So sánh " + arr[j] + " với pivot " + pivot);
             if (arr[j] < pivot) {
                 i++;
 
@@ -248,6 +260,10 @@ public class HelloController {
 
                 // Đánh dấu các phần tử được hoán đổi bằng màu ĐỎ
                 drawArray(arr, Arrays.asList(i, j), Color.RED);
+                System.out.println("Đổi chỗ phần tử ở chỉ số " + i + " với phần tử ở chỉ số " + j);
+
+
+
             }
         }
 
@@ -255,6 +271,8 @@ public class HelloController {
         int temp = arr[i + 1];
         arr[i + 1] = arr[high];
         arr[high] = temp;
+
+        System.out.println("Đổi chỗ phần tử ở chỉ số " + (i + 1) + " với pivot ở chỉ số " + high);
 
         // Đánh dấu các phần tử được hoán đổi bằng màu ĐỎ
         drawArray(arr, Arrays.asList(i + 1, high), Color.RED);
@@ -282,6 +300,7 @@ public class HelloController {
             for (int j = 0; j < n-i-1; j++) {
                 // Đánh dấu sự so sánh bằng màu ĐEN
                 drawArray(arr, Arrays.asList(j, j+1), Color.BLACK);
+                System.out.println("So sánh phần tử ở chỉ số " + j + " (" + arr[j] + ") với phần tử ở chỉ số " + (j+1) + " (" + arr[j+1] + ")");
 
                 if (arr[j] > arr[j+1]) {
                     // swap arr[j] and arr[j+1]
@@ -291,10 +310,11 @@ public class HelloController {
 
                     // Đánh dấu các phần tử được hoán đổi bằng màu ĐỎ
                     drawArray(arr, Arrays.asList(j, j+1), Color.RED);
+                    System.out.println("Đổi chỗ phần tử ở chỉ số " + j + " (" + arr[j+1] + ") với phần tử ở chỉ số " + (j+1) + " (" + arr[j] + ")");
                 }
 
                // Thời gian chạy
-                Thread.sleep(100);
+                Thread.sleep(500);
             }
         }
     }
