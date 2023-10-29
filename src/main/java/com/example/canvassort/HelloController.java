@@ -126,76 +126,13 @@ public class HelloController {
     public void startSimulation() {
         new Thread(() -> {
             try {
-//                mergeSort(array, 0, array.length - 1);
                 mergeSort(array,0,array.length-1);
-//                System.out.println("Sau khi sắp xếp: \n" +
-//                        Arrays.toString(array));
                 drawArray(array, Collections.emptyList(), Color.GREEN);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }).start();
     }
-
-//    public  int []mergeSort(int []a1, int []a2){
-//        // thuc hien tron vao voi nhau
-//        int n = a1.length +a2.length;
-//        int [] result= new int[n];
-//        int i=0,i1=0,i2=0;
-//        while (i<n){
-//            if (i1<a1.length && i2<a2.length) {
-//                // a1 va a2 khac rong
-//                if (a1[i1] <= a2[i2]) {
-//                    result[i] = a1[i1];
-//                    i++;i1++;
-//                } else {
-//                    // a2 nho hon
-//                    result[i] = a2[i2];
-//                    i++;i2++;
-//                }
-//            }else {
-//                if(i1<a1.length){
-//                    //a1 ok
-//                    result[i] =a1[i1];
-//                    i++;
-//                    i1++;
-//                }
-//                else {
-//                    //a2 ok
-//                    result[i] =a2[i2];
-//                    i++;i2++;
-//                }
-//            }
-//        }
-//        return  result;
-//    }
-//
-//    public  int [] mergeSort(int a[], int L, int R) throws InterruptedException {
-//        // dieu kien dung
-//        if(L>R) return  new int[0];
-//        if (L==R){
-//            int [] singleElement ={a[L]};
-//
-//            drawArray(singleElement, Collections.emptyList(), Color.BLACK);
-//            Thread.sleep(500);
-//            return  singleElement;
-//
-//        }
-//
-//        // THTQ
-//        // chia ra
-//        System.out.println("Chia: "+L+" - " +R);
-//        int k =(L+R)/2;
-//        int [] a1 = mergeSort(a,L,k);
-//        int [] a2 = mergeSort(a,k+1,R);
-//        int [] result  = mergeSort(a1,a2);
-//        System.out.println("Ket qua Merge: "+Arrays.toString(result));
-//        drawArray(result, Collections.emptyList(), Color.RED);
-//        Thread.sleep(500);
-//        return  result;
-//    }
-//
-
     // hàm trộn merger sort
     private void mergeSort(int[] arr, int l, int r) throws InterruptedException {
         if (l < r) {
