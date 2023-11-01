@@ -14,13 +14,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.canvassort.HelloController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.canvassort.HelloController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
-                        <MenuItem text="Load from File" onAction="#loadDataFromFile" />
+                        <MenuItem onAction="#loadDataFromFile" text="Load from File" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
@@ -78,14 +78,15 @@
                     </rowConstraints>
                     <children>
                         <Label text="Quick Sort" />
-                        <Label text="bubble Sort" GridPane.rowIndex="1" />
+                        <Label text="Bubble Sort" GridPane.rowIndex="1" />
                         <Label text="Merge Sort" GridPane.rowIndex="2" />
                         <Button mnemonicParsing="false" onAction="#startSimulation" text="Chạy" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Button mnemonicParsing="false" onAction="#startQuickSortSimulation" text="Chạy" GridPane.columnIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#startBubbleSortSimulation" text="Chạy" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#startQuickSortSimulation" text="Chạy" GridPane.columnIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#startBubbleSortSimulation" text="Chạy" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
                     </children>
                 </GridPane>
+                <Button mnemonicParsing="false" text="Hủy" onAction="#huy" />
 
             </children>
         </VBox>

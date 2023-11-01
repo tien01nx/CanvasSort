@@ -31,6 +31,14 @@ public class HelloController {
     private GraphicsContext gc;
 
     int count;
+    private Thread sortingThread;
+
+    @FXML
+    private  void huy(ActionEvent event){
+        if (sortingThread != null && sortingThread.isAlive()) {
+            sortingThread.interrupt();
+        }
+    }
     @FXML
     private void loadDataFromFile(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -124,14 +132,25 @@ public class HelloController {
 
     @FXML
     public void startSimulation() {
-        new Thread(() -> {
+
+        sortingThread = new Thread(() -> {
             try {
                 mergeSort(array,0,array.length-1);
                 drawArray(array, Collections.emptyList(), Color.GREEN);
-            } catch (Exception e) {
-                e.printStackTrace();
+                System.out.println("Sau khi sắp xếp bằng Merge Sort: \n" + Arrays.toString(array));
+            } catch (InterruptedException e) {
+                System.out.println("Mô phỏng đã bị hủy.");
             }
-        }).start();
+        });
+        sortingThread.start();
+//        new Thread(() -> {
+//            try {
+//                mergeSort(array,0,array.length-1);
+//                drawArray(array, Collections.emptyList(), Color.GREEN);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }).start();
     }
     // hàm trộn merger sort
     private void mergeSort(int[] arr, int l, int r) throws InterruptedException {
@@ -216,15 +235,27 @@ public class HelloController {
     // quick sort
     @FXML
     public void startQuickSortSimulation() {
-        new Thread(() -> {
+        sortingThread = new Thread(() -> {
             try {
                 quicksort(array, 0, array.length - 1);
                 drawArray(array, Collections.emptyList(), Color.GREEN);
                 System.out.println("Sau khi sắp xếp bằng Quick Sort: \n" + Arrays.toString(array));
-            } catch (Exception  e) {
-                e.printStackTrace();
+            } catch (InterruptedException e) {
+                System.out.println("Mô phỏng đã bị hủy.");
             }
-        }).start();
+        });
+        sortingThread.start();
+
+//
+//        new Thread(() -> {
+//            try {
+//                quicksort(array, 0, array.length - 1);
+//                drawArray(array, Collections.emptyList(), Color.GREEN);
+//                System.out.println("Sau khi sắp xếp bằng Quick Sort: \n" + Arrays.toString(array));
+//            } catch (Exception  e) {
+//                e.printStackTrace();
+//            }
+//        }).start();
     }
     public void quicksort(int[] arr, int L, int R) throws InterruptedException {
         // Chọn khoá
@@ -264,15 +295,25 @@ public class HelloController {
     // bubble sort
     @FXML
     public void startBubbleSortSimulation() {
-        new Thread(() -> {
+//        new Thread(() -> {
+//            try {
+//                bubbleSort(array);
+//                drawArray(array, Collections.emptyList(), Color.GREEN);
+//                System.out.println("Sau khi sắp xếp bằng Bubble Sort: \n" + Arrays.toString(array));
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }).start();
+        sortingThread = new Thread(() -> {
             try {
                 bubbleSort(array);
                 drawArray(array, Collections.emptyList(), Color.GREEN);
                 System.out.println("Sau khi sắp xếp bằng Bubble Sort: \n" + Arrays.toString(array));
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                System.out.println("Mô phỏng đã bị hủy.");
             }
-        }).start();
+        });
+        sortingThread.start();
     }
     private void bubbleSort(int[] arr) throws InterruptedException {
         int n = arr.length;
