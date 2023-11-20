@@ -14,25 +14,17 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.canvassort.HelloController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.canvassort.Main">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
                         <MenuItem onAction="#loadDataFromFile" text="Load from File" />
+                        <MenuItem onAction="#saveDataToFile" text="Save File" />
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
-                    </items>
-                </Menu>
+
             </menus>
         </MenuBar>
     </top>
@@ -63,7 +55,7 @@
                         <Label text="Số lượng" GridPane.rowIndex="1" />
                         <Button alignment="CENTER" mnemonicParsing="false" onAction="#generateRandomNumbers" prefHeight="30.0" prefWidth="88.0" text="Random" GridPane.rowIndex="2" />
                         <TextField fx:id="countTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-
+                        <Button mnemonicParsing="false" onAction="#huy" prefHeight="30.0" prefWidth="85.0" text="Hủy" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                     </children>
                 </GridPane>
                 <GridPane prefHeight="90.0" prefWidth="168.0">
@@ -80,13 +72,12 @@
                         <Label text="Quick Sort" />
                         <Label text="Bubble Sort" GridPane.rowIndex="1" />
                         <Label text="Merge Sort" GridPane.rowIndex="2" />
-                        <Button mnemonicParsing="false" onAction="#startSimulation" text="Chạy" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#startMergeSortSimulation" text="Chạy" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Button mnemonicParsing="false" onAction="#startQuickSortSimulation" text="Chạy" GridPane.columnIndex="1" />
                         <Button mnemonicParsing="false" onAction="#startBubbleSortSimulation" text="Chạy" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
                     </children>
                 </GridPane>
-                <Button mnemonicParsing="false" text="Hủy" onAction="#huy" />
 
             </children>
         </VBox>
