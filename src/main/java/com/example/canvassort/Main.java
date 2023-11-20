@@ -1,9 +1,9 @@
 package com.example.canvassort;
 
-import com.example.canvassort.Interfaces.BubbleSort;
-import com.example.canvassort.Interfaces.MergeSort;
-import com.example.canvassort.Interfaces.QuickSort;
-import com.example.canvassort.Implements.SortStrategy;
+import com.example.canvassort.Implements.BubbleSort;
+import com.example.canvassort.Implements.MergeSort;
+import com.example.canvassort.Implements.QuickSort;
+import com.example.canvassort.Interfaces.SortStrategy;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

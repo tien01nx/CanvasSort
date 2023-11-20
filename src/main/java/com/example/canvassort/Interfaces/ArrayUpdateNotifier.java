@@ -1,4 +1,4 @@
-package com.example.canvassort.Implements;
+package com.example.canvassort.Interfaces;
 
 import javafx.scene.paint.Color;
 

@@ -1,7 +1,7 @@
-package com.example.canvassort.Interfaces;
+package com.example.canvassort.Implements;
 
-import com.example.canvassort.Implements.ArrayUpdateNotifier;
-import com.example.canvassort.Implements.SortStrategy;
+import com.example.canvassort.Interfaces.ArrayUpdateNotifier;
+import com.example.canvassort.Interfaces.SortStrategy;
 import javafx.scene.paint.Color;
 
 import java.util.Arrays;
