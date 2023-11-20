@@ -11,7 +11,6 @@ public class DataHandler {
 
     public DataHandler() {
     }
-
     public int[] generateRandomData(int size, int bound) {
         Random random = new Random();
         int[] data = new int[size];
@@ -20,8 +19,6 @@ public class DataHandler {
         }
         return data;
     }
-
-
     public List<int[]> readFromFile() {
         List<int[]> arrays = new ArrayList<>();
         FileChooser fileChooser = new FileChooser();
@@ -48,11 +45,6 @@ public class DataHandler {
         }
         return arrays;
     }
-
-
-
-
-    // VIẾT CHỨC NĂNG LƯU FILE VÀ LƯU TRÊN MÁY TÍNH CỦA NGƯỜI DÙNG BẰNG FILE CHOOSER ĐỊNH DẠNG FILE LÀ TXT VÀ CHO NGƯỜI DÙNG NHẬP TÊN FILE LƯU
     public void saveToFile(int[] data) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Data File");

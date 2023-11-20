@@ -1,5 +1,9 @@
 package com.example.canvassort;
 
+import com.example.canvassort.Interfaces.BubbleSort;
+import com.example.canvassort.Interfaces.MergeSort;
+import com.example.canvassort.Interfaces.QuickSort;
+import com.example.canvassort.Implements.SortStrategy;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -93,7 +97,6 @@ public class Main {
     public void startBubbleSortSimulation() {
         startSorting(new BubbleSort());
     }
-
     private void startSorting(SortStrategy sortStrategy) {
         if (array == null || array.length == 0) {
             showAlert("Error", "Không có dữ liệu để sắp xếp.");

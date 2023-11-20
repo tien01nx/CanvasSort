@@ -1,11 +1,13 @@
-package com.example.canvassort;
+package com.example.canvassort.Interfaces;
 
+import com.example.canvassort.Implements.ArrayUpdateNotifier;
+import com.example.canvassort.Implements.SortStrategy;
 import javafx.scene.paint.Color;
 
 import java.util.Arrays;
 import java.util.Collections;
 
-public class BubbleSort  implements SortStrategy{
+public class BubbleSort  implements SortStrategy {
     @Override
     public void sort(int[] array, ArrayUpdateNotifier notifier) throws InterruptedException {
         for (int i = 0; i < array.length - 1; i++) {

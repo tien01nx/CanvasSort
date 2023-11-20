@@ -5,4 +5,8 @@ module com.example.canvassort {
 
     opens com.example.canvassort to javafx.fxml;
     exports com.example.canvassort;
+    exports com.example.canvassort.Implements;
+    opens com.example.canvassort.Implements to javafx.fxml;
+    exports com.example.canvassort.Interfaces;
+    opens com.example.canvassort.Interfaces to javafx.fxml;
 }

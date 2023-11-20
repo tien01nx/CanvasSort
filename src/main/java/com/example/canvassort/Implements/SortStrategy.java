@@ -1,9 +1,5 @@
-package com.example.canvassort;
+package com.example.canvassort.Implements;
 
-import javafx.scene.paint.Color;
-
-import java.util.List;
 public interface SortStrategy {
     void sort(int[] array, ArrayUpdateNotifier notifier) throws InterruptedException;
-
 }

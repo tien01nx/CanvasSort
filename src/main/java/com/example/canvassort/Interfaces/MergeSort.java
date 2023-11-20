@@ -1,11 +1,12 @@
-package com.example.canvassort;
+package com.example.canvassort.Interfaces;
 
+import com.example.canvassort.Implements.ArrayUpdateNotifier;
+import com.example.canvassort.Implements.SortStrategy;
 import javafx.scene.paint.Color;
 
 import java.util.Arrays;
 
-public class MergeSort implements SortStrategy  {
-
+public class MergeSort implements SortStrategy {
     @Override
     public void sort(int[] array, ArrayUpdateNotifier notifier) throws InterruptedException {
         int[] aux = array.clone();

@@ -1,16 +1,16 @@
-package com.example.canvassort;
+package com.example.canvassort.Interfaces;
 
+import com.example.canvassort.Implements.ArrayUpdateNotifier;
+import com.example.canvassort.Implements.SortStrategy;
 import javafx.scene.paint.Color;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class QuickSort implements SortStrategy {
     @Override
     public void sort(int[] array, ArrayUpdateNotifier updateNotifier) throws InterruptedException {
         quicksort(array, 0, array.length - 1, updateNotifier);
     }
-
     private void quicksort(int[] arr, int L, int R, ArrayUpdateNotifier updateNotifier) throws InterruptedException {
         if (L >= R) return;
         if (Thread.currentThread().isInterrupted()) return;
@@ -25,7 +25,6 @@ public class QuickSort implements SortStrategy {
         quicksort(arr, L, partitionIndex - 1, updateNotifier);
         quicksort(arr, partitionIndex, R, updateNotifier);
     }
-
     private int partition(int[] arr, int L, int R, int pivot, ArrayUpdateNotifier updateNotifier) throws InterruptedException {
         int i = L, j = R;
         while (i <= j) {
